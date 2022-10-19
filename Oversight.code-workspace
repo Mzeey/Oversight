@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "OversightEntitiesLib"
+		},
+		{
+			"path": "OversightContextLib"
+		},
+		{
+			"path": "OversightService"
+		}
+	],
+	"settings": {}
+}

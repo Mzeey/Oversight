@@ -1,0 +1,12 @@
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\OversightEntities.csproj.AssemblyReference.cache
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\OversightEntities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\OversightEntities.AssemblyInfoInputs.cache
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\OversightEntities.AssemblyInfo.cs
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\OversightEntities.csproj.CoreCompileInputs.cache
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\bin\Debug\net6.0\OversightEntities.deps.json
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\bin\Debug\net6.0\OversightEntities.dll
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\bin\Debug\net6.0\OversightEntities.pdb
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\OversightEntities.dll
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\refint\OversightEntities.dll
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\OversightEntities.pdb
+C:\Users\Chidi Obi\Documents\Projects\Oversight\OversightEntities\obj\Debug\net6.0\ref\OversightEntities.dll
