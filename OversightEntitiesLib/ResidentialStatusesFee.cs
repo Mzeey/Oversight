@@ -15,12 +15,7 @@ namespace Mzeey.Shared
         public DateTime DateModified {get;set;}
 
         //Foreign Keys
-        public Fee Fee {get;set;}
-        public ResidentialStatus ResidentialStatus {get;set;}
-
-        public ResidentialStatusesFee(){
-            this.Fee = new Fee();
-            this.ResidentialStatus = new ResidentialStatus();
-        }
+        public Fee? Fee {get;set;}
+        public ResidentialStatus? ResidentialStatus {get;set;}
     }
 }

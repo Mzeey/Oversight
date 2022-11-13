@@ -12,12 +12,7 @@ namespace Mzeey.Shared
         public int SettingId {get;set;}
 
         //Foreign Keys
-        public User User {get;set;}
-        public Setting Setting {get;set;}
-
-        public UsersSetting(){
-            this.User = new User();
-            this.Setting = new Setting();
-        }
+        public User? User {get;set;}
+        public Setting? Setting {get;set;}
     }
 }

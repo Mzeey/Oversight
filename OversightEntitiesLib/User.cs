@@ -28,32 +28,19 @@ namespace Mzeey.Shared
         /// 3 - Resident
         /// </summary>
         /// <value></value>
-        public byte StatusControl {get;set;}
+        public short StatusControl {get;set;}
         public DateTime DateCreated {get;set;}
         public DateTime DateModified {get;set;}
 
         //Foreign Key Link
-        public ResidentialStatus ResidentStatus {get;set;}
+        public ResidentialStatus? ResidentStatus {get;set;}
 
         //Relations
-        public ICollection<UsersSetting> UsersSettings {get;set;}
-        public ICollection<OtpCode> OtpCodes {get;set;}
-        public ICollection<TwoFA> TwoFAs {get;set;}
-        public ICollection<Subscription> Subscriptions {get;set;}
-        public ICollection<PaymentMethod> PaymentMethods {get;set;}
-        public ICollection<Invoice> Invoices {get;set;}
-
-
-        public User(){
-            this.ResidentStatus = new ResidentialStatus();
-
-            this.UsersSettings = new HashSet<UsersSetting>();
-            this.OtpCodes = new HashSet<OtpCode>();
-            this.TwoFAs = new HashSet<TwoFA>();
-            this.Subscriptions = new HashSet<Subscription>();
-            this.PaymentMethods = new HashSet<PaymentMethod>();
-            this.Invoices = new HashSet<Invoice>();
-        }
-
+        public ICollection<UsersSetting>? UsersSettings {get;set;}
+        public ICollection<OtpCode>? OtpCodes {get;set;}
+        public ICollection<TwoFA>? TwoFAs {get;set;}
+        public ICollection<Subscription>? Subscriptions {get;set;}
+        public ICollection<PaymentMethod>? PaymentMethods {get;set;}
+        public ICollection<Invoice>? Invoices {get;set;}
     }
 }

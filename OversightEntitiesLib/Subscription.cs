@@ -14,12 +14,7 @@ namespace Mzeey.Shared
         public DateTime EndDate {get;set;}
 
         //Foreign Keys
-        public User User {get;set;}
-        public Fee Fee {get;set;}
-
-        public Subscription(){
-            this.User = new User();
-            this.Fee = new Fee();
-        }
+        public User? User {get;set;}
+        public Fee? Fee {get;set;}
     }
 }

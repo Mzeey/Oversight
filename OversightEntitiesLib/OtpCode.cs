@@ -21,8 +21,5 @@ namespace Mzeey.Shared
         //Foreign Key
         public User? User {get;set;}
 
-        public OtpCode(){
-            this.User = new User();
-        }
     }
 }

@@ -21,10 +21,5 @@ namespace Mzeey.Shared
 
         //Foreign Keys
         public User? User {get;set;}
-
-
-        public TwoFA(){
-            this.User = new User();
-        }
     }
 }

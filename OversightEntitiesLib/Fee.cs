@@ -16,9 +16,5 @@ namespace Mzeey.Shared
         //Relations
         public ICollection<ResidentialStatusesFee>? ResidentStatusesFees {get;set;}
         public ICollection<Subscription>? Subscriptions {get;set;}
-        public Fee(){
-            this.ResidentStatusesFees = new HashSet<ResidentialStatusesFee>();
-            this.Subscriptions = new HashSet<Subscription>();
-        }
     }
 }

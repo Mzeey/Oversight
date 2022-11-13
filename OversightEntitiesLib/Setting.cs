@@ -13,10 +13,7 @@ namespace Mzeey.Shared
         public DateTime DateModified {get;set;}
 
         //Relations
-        public ICollection<UsersSetting> UsersSettings {get;set;}
+        public ICollection<UsersSetting>? UsersSettings {get;set;}
 
-        public Setting(){
-            this.UsersSettings = new HashSet<UsersSetting>();
-        }
     }
 }

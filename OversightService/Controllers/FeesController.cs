@@ -3,78 +3,88 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using OversightService.Repositories;
 using Mzeey.Shared;
+using OversightService.Repositories;
 
 namespace OversightService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ResidentialStatusController : ControllerBase
+    public class FeesController : ControllerBase
     {
-        private readonly IResidentialStatusRepository _repo;
-
-        public ResidentialStatusController(IResidentialStatusRepository repo){
+        private readonly IFeesRepository _repo;
+        public FeesController(IFeesRepository repo){
             _repo = repo;
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<ResidentialStatus>))]
-        public async Task<IEnumerable<ResidentialStatus>> GetResidentialStatuses(){
+        [ProducesResponseType(200, Type= typeof(IEnumerable<Fee>))]
+        public async Task<IEnumerable<Fee>> GetFees(){
             return await _repo.RetrieveAllAsync();
         }
 
-        [HttpGet("{id}", Name = nameof(GetResidentialStatus))]
-        [ProducesResponseType(200, Type = typeof(ResidentialStatus))]
+        [HttpGet("{id}", Name = nameof(GetFee))]
+        [ProducesResponseType(200, Type=typeof(Fee))]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> GetResidentialStatus(int id){
-            ResidentialStatus rs = await _repo.RetrieveAsync(id);
-            if(rs is null){
+        public async Task<IActionResult> GetFee(int id){
+            Fee fee = await _repo.RetrieveAsync(id);
+            if(fee is null){
                 return NotFound();
             }
-            return Ok(rs);
+            return Ok(fee);
         }
 
-        [HttpPost]
-        [ProducesResponseType(200, Type = typeof(ResidentialStatus))]
+        [HttpPost("Create")]
+        [ProducesResponseType(200, Type = typeof(Fee))]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> Create([FromBody] ResidentialStatus rs){
-            if (rs is null){
+        public async Task<IActionResult> CreateFee([FromBody] Fee fee){
+            if(fee is null){
                 return BadRequest();
             }
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
-            ResidentialStatus newRs = await _repo.CreateAsync(rs);
+            fee.IsActive = true;
+            fee.DateCreated = DateTime.Now;
+            fee.DateModified = fee.DateCreated;
+            Fee newFee = await _repo.CreateAsync(fee);
             return CreatedAtRoute(
-                routeName: nameof(GetResidentialStatus),
-                routeValues: new {id = newRs.Id},
-                value: newRs
+                routeName: nameof(GetFee),
+                routeValues: new{id = newFee.Id},
+                value: new{
+                    NewFee= newFee,
+                    Message = $"{newFee.Title} was created Successfully",
+                    IsCreated = true
+                }
             );
-
         }
 
-        [HttpPut("{id}")]
-        [ProducesResponseType(204)]
+        [HttpPut("Update/{id}")]
+        [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> Update(int id, [FromBody] ResidentialStatus rs){
-            if(rs is null || rs.Id != id){
+        public async Task<IActionResult> UpdateFee(int id, [FromBody] Fee fee){
+            if(fee is null || fee.Id != id){
                 return BadRequest();
             }
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
+            fee.DateModified = DateTime.Now;
             var existing = await _repo.RetrieveAsync(id);
             if(existing is null){
                 return NotFound();
             }
-             
-            await _repo.UpdateAsync(id, rs);
-            return new NoContentResult();
+
+            await _repo.UpdateAsync(id, fee);
+            return Ok(new{
+                Modified = fee,
+                isUpdated = true,
+                Message = $"Fee '{fee.Id}' was updated successfully"
+            });
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -94,14 +104,16 @@ namespace OversightService.Controllers
                 );
             }else{
                 return BadRequest(
-                   new{
-                        Message = $"Residential status '{existing.Title}' was found but faild to delete",
+                    new {
+                        Message = $"Fee '{existing.Title}' with id: '{existing.Id}' was found but faild to delete",
                         isFound = true,
                         isDeleted = false
-                   } 
+                    }
+                    
                 );
             }
 
         }
+
     }
 }

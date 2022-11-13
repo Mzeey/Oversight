@@ -15,10 +15,6 @@ namespace Mzeey.Shared
         public string? ModeOfPayment {get;set;}
 
         //Foreign Key
-        public User User {get;set;}
-
-        public Invoice(){
-            this.User = new User();
-        }
+        public User? User {get;set;}
     }
 }
