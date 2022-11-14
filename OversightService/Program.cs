@@ -37,6 +37,7 @@ builder.Services.AddScoped<IResidentialStatusRepository, ResidentialStatusReposi
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IFeesRepository, FeesRepository>();
 builder.Services.AddScoped<IEstateAddressesRepository, EstateAddressesRepository>();
+builder.Services.AddScoped<IInvoicesRepository, InvoiceRepository>();
 
 var app = builder.Build();
 
